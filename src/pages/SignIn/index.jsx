@@ -20,7 +20,7 @@ export function SignIn() {
         <Container>
             <main className="main">
                 <div className="title">
-                    <img src="./src/assets/explorer-c5393f6d.svg" alt="" />
+                    <img src="/src/assets/explorer.svg" alt="" />
                     <h2>doce maria</h2>
                 </div>
                 <Form>

@@ -139,7 +139,7 @@ export function Home() {
 
                             {
                                 plates.filter(plate => plate.category == "Sobremesas").length > 0 &&
-                                <Section title="Pratos Principais">
+                                <Section title="Sobremesas">
                                     {
                                         plates.filter(plate => plate.category == "Sobremesas").map(plate => (
                                             <Card
@@ -153,7 +153,7 @@ export function Home() {
 
                             {
                                 plates.filter(plate => plate.category == "Bebidas").length > 0 &&
-                                <Section title="Pratos Principais">
+                                <Section title="Bebidas">
                                     {
                                         plates.filter(plate => plate.category == "Bebidas").map(plate => (
                                             <Card

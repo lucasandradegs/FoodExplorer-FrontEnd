@@ -10,8 +10,6 @@ import { MdKeyboardArrowRight } from 'react-icons/md'
 import { useAuth } from "../../hooks/auth"
 import { api } from "../../services/api"
 import { useState, useEffect } from "react"
-import desktopBanner from "../../../public/images/banner.svg"
-import mobileBanner from "../../../public/images/bannerMobile.svg"
 
 import { USER_ROLE } from "../../utils/roles"
 

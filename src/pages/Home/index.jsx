@@ -58,23 +58,9 @@ export function Home() {
                             </div>
                         </section>
                         <div className="Transition">
-                            {
-                                plates.filter(plate => plate.category == "teste").length > 0 &&
-                                <Section title="Refeições">
-                                    {
-                                        plates.filter(plate => plate.category == "teste").map(plate => (
-                                            <Card
-                                                key={String(plate.id)}
-                                                data={plate}
-                                            />
-                                        ))
-                                    }
-                                </Section>
-                            }
-
-                            {
+                        {
                                 plates.filter(plate => plate.category == "Refeições").length > 0 &&
-                                <Section title="Pratos Principais">
+                                <Section title="Refeições">
                                     {
                                         plates.filter(plate => plate.category == "Refeições").map(plate => (
                                             <Card
@@ -87,10 +73,24 @@ export function Home() {
                             }
 
                             {
-                                plates.filter(plate => plate.category == "teste").length > 0 &&
-                                <Section title="Pratos Principais">
+                                plates.filter(plate => plate.category == "Sobremesas").length > 0 &&
+                                <Section title="Sobremesas">
                                     {
-                                        plates.filter(plate => plate.category == "teste").map(plate => (
+                                        plates.filter(plate => plate.category == "Sobremesas").map(plate => (
+                                            <Card
+                                                key={String(plate.id)}
+                                                data={plate}
+                                            />
+                                        ))
+                                    }
+                                </Section>
+                            }
+
+                            {
+                                plates.filter(plate => plate.category == "Bebidas").length > 0 &&
+                                <Section title="Bebidas">
+                                    {
+                                        plates.filter(plate => plate.category == "Bebidas").map(plate => (
                                             <Card
                                                 key={String(plate.id)}
                                                 data={plate}

@@ -8,6 +8,7 @@ export const Container = styled.div`
 
     margin: 15.8rem 6.5rem;
 
+
     .title {
         display: flex;
         align-items: center;
@@ -16,9 +17,9 @@ export const Container = styled.div`
         gap: 1.1rem;
         margin-bottom: 4.1rem;
 
-        animation: main 2.0s;
+        animation: SignUp 2.0s;
 
-        @keyframes main {
+        @keyframes SignUp {
             from {
                 transform: translateY(-100%);
             }
@@ -59,9 +60,10 @@ export const Form = styled.form`
     flex-direction: column;
 
 
-    animation: form 1.5s;
 
-        @keyframes form {
+    animation: FormSignUp 1.5s;
+
+        @keyframes FormSignUp {
             from {
                 transform: translateX(-50%);
             }

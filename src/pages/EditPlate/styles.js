@@ -23,9 +23,9 @@ export const Content = styled.div`
 
     .newPlateSection {
         overflow-x: hidden;
-        animation: main 2.0s;
+        animation: EditPlate 2.0s;
 
-        @keyframes main {
+        @keyframes EditPlate {
             from {
                 transform: translateX(100%);
             }
@@ -34,9 +34,9 @@ export const Content = styled.div`
 
     .DesktopForm {
         overflow-x: hidden;
-        animation: main 2.0s;
+        animation: DesktopEdit 2.0s;
 
-        @keyframes main {
+        @keyframes DesktopEdit {
             from {
                 transform: translateX(100%);
             }

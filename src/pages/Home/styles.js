@@ -31,9 +31,9 @@ export const UserContent = styled.main`
 
     .Transition {
         overflow-y: hidden;
-        animation: main 2.0s;
+        animation: Home 2.0s;
 
-        @keyframes main {
+        @keyframes Home {
             from {
                 transform: translateY(100%);
             }

@@ -168,13 +168,13 @@ export const Content = styled.main`
 `;
 
 export const UserContent = styled.div`
-    animation: main 1.4s;
+        animation: DetailsUser 2.0s;
 
-    @keyframes main {
-        from {
-            transform: translateX(100%);
+        @keyframes DetailsUser {
+            from {
+                transform: translateX(100%);
+            }
         }
-    }
 
     .Details {
         button {
@@ -185,9 +185,9 @@ export const UserContent = styled.div`
 
 
 export const AdminContent = styled.div`
-        animation: main 1.4s;
+        animation: Details 1.4s;
 
-        @keyframes main {
+        @keyframes Details {
             from {
                 transform: translateX(100%);
             }

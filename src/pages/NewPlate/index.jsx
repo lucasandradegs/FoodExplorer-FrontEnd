@@ -145,7 +145,7 @@ export function NewPlate() {
                         </div>
                     )} */}
                     <label htmlFor="imageInput">Imagem do prato</label>
-                    <Input icon={FiUpload} placeholder="Selecione a Imagem" onClick={handleCostumInputClick} readOnly />
+                    <Input icon={FiUpload} placeholder="Selecione a Imagem" onClick={handleCostumInputClick} readOnly accept=".png"/>
                     <input
                         type="file"
                         id="imageInput"

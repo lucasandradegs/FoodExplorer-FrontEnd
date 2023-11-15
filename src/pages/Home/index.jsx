@@ -10,6 +10,8 @@ import { MdKeyboardArrowRight } from 'react-icons/md'
 import { useAuth } from "../../hooks/auth"
 import { api } from "../../services/api"
 import { useState, useEffect } from "react"
+import desktopBanner from "../../../public/images/banner.svg"
+import mobileBanner from "../../../public/images/bannerMobile.svg"
 
 import { USER_ROLE } from "../../utils/roles"
 
@@ -108,8 +110,8 @@ export function Home() {
                     <AdminContent>
 
                         <section className="BannerImg">
-                            <img className="bannerMobile" src="./src/assets/bannerMobile.svg" alt="" />
-                            <img className="bannerDesktop" src="./src/assets/banner.svg" alt="" />
+                            <img className="bannerMobile" src="/images/bannerMobile.svg" alt="" />
+                            <img className="bannerDesktop" src="/images/banner.svg" alt="" />
 
                             <div className="mobileTitle">
                                 <h2>Doce Maria</h2>

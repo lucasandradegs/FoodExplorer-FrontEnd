@@ -45,8 +45,8 @@ export function Home() {
                     <UserContent>
 
                         <section className="BannerImg">
-                            <img className="bannerMobile" src="assets/bannermobile-c4066a2c.svg" alt="" />
-                            <img className="bannerDesktop" src="assets/banner-b78310ff.svg" alt="" />
+                            <img className="bannerMobile" src={bannerMobile} alt="" />
+                            <img className="bannerDesktop" src={bannerDesktop} alt="" />
 
                             <div className="mobileTitle">
                                 <h2>Doce Maria</h2>

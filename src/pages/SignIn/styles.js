@@ -6,8 +6,6 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    overflow-y: hidden;
-
     margin: 15.8rem 6.5rem;
 
     .title {
@@ -18,9 +16,9 @@ export const Container = styled.div`
         gap: 1.1rem;
         margin-bottom: 4.1rem;
 
-        animation: SignIn 2.0s;
+        animation: Mobile 2.0s;
 
-        @keyframes SignIn {
+        @keyframes Mobile {
             from {
                 transform: translateY(100%);
             }
@@ -59,15 +57,18 @@ export const Container = styled.div`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
 
-    animation: FormSignIn 1.5s;
+    animation: Desktop 1.5s;
 
-        @keyframes FormSignIn {
+        @keyframes Desktop {
             from {
                 transform: translateX(50%);
             }
         }
+
+    @media (max-width: 350px) {
+        width: 300px;
+    }
     
     input {
         width: 31.6rem;

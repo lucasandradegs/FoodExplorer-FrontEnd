@@ -57,6 +57,7 @@ export const Middle = styled.div`
     gap: 8px;
     align-items: center;
 
+
     img {
         height: 24px;
         width: 24px;
@@ -152,6 +153,10 @@ export const AdminContent = styled.div`
         display: flex;
         gap: .8rem;
         align-items: center;
+
+        a {
+            color: ${({theme}) => theme.COLORS.LIGHT_300};
+        }
 
         span {
             font-size: 1.2rem;

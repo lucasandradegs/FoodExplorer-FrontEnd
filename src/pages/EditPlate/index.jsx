@@ -25,6 +25,8 @@ export function EditPlate() {
     const [description, setDescription] = useState("")
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
+    const [buttonEditLoading, setButtonEditLoading] = useState(false)
+    const [buttonDeleteLoading, setButtonDeleteLoading] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const params = useParams();
@@ -32,13 +34,6 @@ export function EditPlate() {
     const inputRef = useRef()
 
     async function handleEditPlate() {
-
-        // if (!imageFile) {
-        //     return toast.error('Você precisa enviar a imagem do prato!', {
-        //         theme: "colored"
-        //     })
-        // }
-
         if (!name) {
             return toast.error('Você precisa informar o nome do prato!', {
                 theme: "colored"
@@ -85,37 +80,56 @@ export function EditPlate() {
                 formData.append("image", imageFile)
             }
 
+            setButtonEditLoading(true)
+
             api.put(`/plates/${params.id}`, { name, category, ingredients, price, description })
             api.patch(`/plates/${params.id}`, formData)
 
-            toast.success('Prato modificado com sucesso!', {
-                theme: "colored"
-            })
+            setTimeout(() => {
+                toast.success('Prato modificado com sucesso!', {
+                    theme: "colored"
+                })
+            }, 1300)
 
             setTimeout(() => {
                 navigate("/")
-            }, 2500)
+            }, 4200)
+
         } catch (error) {
-            console.error(error)
+
             return toast.error(`Não foi possivel editar o prato`)
+
+        } finally {
+            setTimeout(() => {
+                setButtonEditLoading(false)
+            }, 4000)
         }
     }
 
     async function handleRemovePlate() {
         try {
+            setButtonDeleteLoading(true)
+
             await api.delete(`/plates/${params.id}`)
 
-            toast.success(`Prato removido com sucesso!`, {
-                theme: "colored"
-            })
+            setTimeout(() => {
+                toast.success(`Prato removido com sucesso!`, {
+                    theme: "colored"
+                })
+            }, 1300)
 
             setTimeout(() => {
                 navigate("/");
-            }, 2500);
+            }, 4200);
 
         } catch (error) {
-            console.error(error)
+
             return toast.error(`Não foi possivel remover o prato`)
+
+        } finally {
+            setTimeout(() => {
+                setButtonDeleteLoading(false)
+            }, 4000)
         }
     }
 
@@ -164,96 +178,26 @@ export function EditPlate() {
         fetchPlate()
     }, [])
 
-    
+
     return (
         <div className="LoadingEdit" style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
             {
                 loading ?
-                <FadeLoader color={"#36a6d6"} loading={loading} size={25}/>
-                :
-                <Container>
-                    <Header >
-                        <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" onChange={(e) => setSearch(e.target.value)} />
-                    </ Header>
-                    <Content>
-                        <Link to="/">
-                            <ButtonText icon={PiCaretLeftBold} title="voltar" />
-                        </Link>
-                        <ToastContainer />
-                        <div className="newPlateSection">
-                            <h2>Editar prato</h2>
+                    <FadeLoader color={"#36a6d6"} loading={loading} size={25} />
+                    :
+                    <Container>
+                        <Header >
+                            <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" onChange={(e) => setSearch(e.target.value)} />
+                        </ Header>
+                        <Content>
+                            <Link to="/">
+                                <ButtonText icon={PiCaretLeftBold} title="voltar" />
+                            </Link>
+                            <ToastContainer />
+                            <div className="newPlateSection">
+                                <h2>Editar prato</h2>
 
-                            <label htmlFor="imageInput">Imagem do prato</label>
-                            <Input icon={FiUpload} placeholder="Selecione a Imagem" onClick={handleCostumInputClick} readOnly />
-                            <input
-                                type="file"
-                                id="imageInput"
-                                accept=".png"
-                                style={{ display: 'none' }}
-                                onChange={e => setImageFile(e.target.files[0])}
-                                ref={inputRef}
-                            />
-
-                            <h4>Nome</h4>
-                            <Input
-                                placeholder="Ex: Bolo de Cenoura"
-                                value={name}
-                                onChange={e => setName(e.target.value)}
-                            />
-
-                            <h4>Categoria</h4>
-                            <select value={category} onChange={e => setCategory(e.target.value)}>
-                                <option value="">Selecione uma opção</option>
-                                <option value="Refeições">Refeições</option>
-                                <option value="Sobremesas">Sobremesas</option>
-                                <option value="Bebidas">Bebidas</option>
-                            </select>
-
-                            <h4>Ingredientes</h4>
-                            <div className="Ingredients">
-
-                                {
-                                    ingredients.map((ingredient, index) => (
-                                        <IngredientPlate
-                                            key={String(index)}
-                                            value={ingredient}
-                                            onClick={() => handleRemoveIngredient(ingredient)}
-                                        />
-                                    ))
-                                }
-
-                                <IngredientPlate
-                                    isNew
-                                    placeholder="Adicionar"
-                                    onChange={e => setNewIngredient(e.target.value)}
-                                    value={newIngredient}
-                                    onClick={handleAddIngredient}
-                                />
-                            </div>
-
-                            <h4>Preço</h4>
-                            <Input
-                                placeholder="R$ 00,00"
-                                value={price}
-                                onChange={e => setPrice(e.target.value)}
-                            />
-
-                            <h4>Descrição</h4>
-                            <textarea
-                                placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-                                value={description}
-                                onChange={e => setDescription(e.target.value)}
-                            />
-                            <div className="DeviceButtons">
-                                <Button title="Excluir prato" onClick={handleRemovePlate} />
-                                <Button colored title="Salvar alterações" onClick={handleEditPlate} />
-                            </div>
-                        </div>
-
-                        <h2>Editar prato</h2>
-                        <div className="DesktopForm">
-                            <div className="plateImage">
-                                <h4>Imagem do prato</h4>
+                                <label htmlFor="imageInput">Imagem do prato</label>
                                 <Input icon={FiUpload} placeholder="Selecione a Imagem" onClick={handleCostumInputClick} readOnly />
                                 <input
                                     type="file"
@@ -263,31 +207,22 @@ export function EditPlate() {
                                     onChange={e => setImageFile(e.target.files[0])}
                                     ref={inputRef}
                                 />
-                            </div>
-                            <div className="plateName">
+
                                 <h4>Nome</h4>
                                 <Input
-                                    id="Name"
                                     placeholder="Ex: Bolo de Cenoura"
                                     value={name}
                                     onChange={e => setName(e.target.value)}
                                 />
-                            </div>
 
-                            <div className="plateCategory">
                                 <h4>Categoria</h4>
-                                <select value={category} id="category" onChange={e => setCategory(e.target.value)}>
+                                <select value={category} onChange={e => setCategory(e.target.value)}>
                                     <option value="">Selecione uma opção</option>
                                     <option value="Refeições">Refeições</option>
                                     <option value="Sobremesas">Sobremesas</option>
                                     <option value="Bebidas">Bebidas</option>
                                 </select>
-                            </div>
 
-                        </div>
-                        <div className="DesktopForm">
-
-                            <div className="plateIngredients">
                                 <h4>Ingredientes</h4>
                                 <div className="Ingredients">
 
@@ -309,34 +244,113 @@ export function EditPlate() {
                                         onClick={handleAddIngredient}
                                     />
                                 </div>
-                            </div>
-                            <div className="platePrice">
+
                                 <h4>Preço</h4>
                                 <Input
                                     placeholder="R$ 00,00"
                                     value={price}
                                     onChange={e => setPrice(e.target.value)}
                                 />
-                            </div>
-                        </div>
-                        <div className="DesktopForm">
-                            <div className="plateDesc">
+
                                 <h4>Descrição</h4>
                                 <textarea
                                     placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                                     value={description}
                                     onChange={e => setDescription(e.target.value)}
                                 />
+                                <div className="DeviceButtons">
+                                    <Button title="Excluir prato" onClick={handleRemovePlate} loading={buttonDeleteLoading} />
+                                    <Button colored title="Salvar alterações" onClick={handleEditPlate} loading={buttonEditLoading} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="saveButton">
-                            <Button title="Excluir prato" onClick={handleRemovePlate} />
-                            <Button colored title="Salvar alterações" onClick={handleEditPlate} />
-                        </div>
-                    </Content>
 
-                    <Footer />
-                </Container>
+                            <h2>Editar prato</h2>
+                            <div className="DesktopForm">
+                                <div className="plateImage">
+                                    <h4>Imagem do prato</h4>
+                                    <Input icon={FiUpload} placeholder="Selecione a Imagem" onClick={handleCostumInputClick} readOnly />
+                                    <input
+                                        type="file"
+                                        id="imageInput"
+                                        accept=".png"
+                                        style={{ display: 'none' }}
+                                        onChange={e => setImageFile(e.target.files[0])}
+                                        ref={inputRef}
+                                    />
+                                </div>
+                                <div className="plateName">
+                                    <h4>Nome</h4>
+                                    <Input
+                                        id="Name"
+                                        placeholder="Ex: Bolo de Cenoura"
+                                        value={name}
+                                        onChange={e => setName(e.target.value)}
+                                    />
+                                </div>
+
+                                <div className="plateCategory">
+                                    <h4>Categoria</h4>
+                                    <select value={category} id="category" onChange={e => setCategory(e.target.value)}>
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="Refeições">Refeições</option>
+                                        <option value="Sobremesas">Sobremesas</option>
+                                        <option value="Bebidas">Bebidas</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div className="DesktopForm">
+
+                                <div className="plateIngredients">
+                                    <h4>Ingredientes</h4>
+                                    <div className="Ingredients">
+
+                                        {
+                                            ingredients.map((ingredient, index) => (
+                                                <IngredientPlate
+                                                    key={String(index)}
+                                                    value={ingredient}
+                                                    onClick={() => handleRemoveIngredient(ingredient)}
+                                                />
+                                            ))
+                                        }
+
+                                        <IngredientPlate
+                                            isNew
+                                            placeholder="Adicionar"
+                                            onChange={e => setNewIngredient(e.target.value)}
+                                            value={newIngredient}
+                                            onClick={handleAddIngredient}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="platePrice">
+                                    <h4>Preço</h4>
+                                    <Input
+                                        placeholder="R$ 00,00"
+                                        value={price}
+                                        onChange={e => setPrice(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="DesktopForm">
+                                <div className="plateDesc">
+                                    <h4>Descrição</h4>
+                                    <textarea
+                                        placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                                        value={description}
+                                        onChange={e => setDescription(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                            <div className="saveButton">
+                                <Button title="Excluir prato" onClick={handleRemovePlate} loading={buttonDeleteLoading} />
+                                <Button colored title="Salvar alterações" onClick={handleEditPlate} loading={buttonEditLoading} />
+                            </div>
+                        </Content>
+
+                        <Footer />
+                    </Container>
             }
         </div>
     )

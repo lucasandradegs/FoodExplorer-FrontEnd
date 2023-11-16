@@ -7,17 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { PiCaretLeftBold } from "react-icons/pi";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/Button";
-import { AiOutlineUpload } from "react-icons/ai"
 import { Input } from "../../components/Input";
 import { useEffect, useRef, useState } from "react";
 import { api } from "../../services/api";
 import { ToastContainer, toast } from 'react-toastify'
 import { IngredientPlate } from "../../components/IngredientPlate";
-import { useAuth } from "../../hooks/auth";
 import { FadeLoader } from "react-spinners";
 
 export function NewPlate() {
-    const [imagePreview, setImagePreview] = useState(null)
     const [imageFile, setImageFile] = useState(null);
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
@@ -25,6 +22,7 @@ export function NewPlate() {
     const [description, setDescription] = useState("")
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
+    const [buttonLoading, setButtonLoading] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate();
@@ -69,13 +67,15 @@ export function NewPlate() {
         }
 
         try {
-            const priceRegex = /^\d{1,3},\d{2}$/;
+            const priceRegex = /([0-9]*[\.]{0,1}[0-9]{0,2})/;
 
             if (!priceRegex.test(price)) {
                 return toast.error("Digite o preço num formato válido. Ex: 12,99", {
                     theme: "colored"
                 });
             };
+
+            
 
             const formattedPrice = parseFloat(price.replace(",", "."));
 
@@ -90,18 +90,27 @@ export function NewPlate() {
                 formData.append("ingredients", ingredient)
             ))
 
+            setButtonLoading(true)
+
             await api.post("/plates", formData)
-            toast.success('Prato criado com sucesso!', {
-                theme: "colored"
-            })
+
+            setTimeout(() => {
+                toast.success('Prato criado com sucesso!', {
+                    theme: "colored"
+                })
+            }, 1300)
 
             setTimeout(() => {
                 navigate("/")
-            }, 2500)
+            }, 4200)
 
         } catch (error) {
             console.error(error)
             return toast.error(`Não foi possivel criar o prato`)
+        } finally {
+            setTimeout(() => {
+                setButtonLoading(false)
+            }, 4000)
         }
 
     }
@@ -153,12 +162,6 @@ export function NewPlate() {
                         <ToastContainer />
                         <div className="newPlateSection">
                             <h2>Novo prato</h2>
-                            {/* {imagePreview && (
-                        <div className="Preview">
-                            <h4>Preview da Imagem</h4>
-                            <img src={imagePreview} alt="Preview" style={{ maxWidth: '50%', maxHeight: '200px' }} />
-                        </div>
-                    )} */}
                             <label htmlFor="imageInput">Imagem do prato</label>
                             <Input icon={FiUpload} placeholder="Selecione a Imagem" onClick={handleCostumInputClick} readOnly accept=".png" />
                             <input
@@ -218,7 +221,7 @@ export function NewPlate() {
                                 onChange={e => setDescription(e.target.value)}
                             />
 
-                            <Button colored title="Salvar alterações" onClick={handleNewPlate} />
+                            <Button colored title="Salvar alterações" onClick={handleNewPlate} loading={buttonLoading}/>
                         </div>
 
                         <h2>Adicionar prato</h2>
@@ -298,7 +301,7 @@ export function NewPlate() {
                             </div>
                         </div>
                         <div className="saveButton">
-                            <Button colored title="Salvar alterações" onClick={handleNewPlate} />
+                            <Button colored title="Salvar alterações" onClick={handleNewPlate} loading={buttonLoading}/>
                         </div>
                     </Content>
 

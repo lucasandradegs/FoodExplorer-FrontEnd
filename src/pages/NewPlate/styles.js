@@ -43,12 +43,13 @@ export const Content = styled.div`
         }
     }
 
-
+    a {
+        width: 100px;
+    }
 
     button:nth-child(1) {
         display: flex;
         justify-content: flex-start;
-
         font-size: 1.6rem;
 
         margin-top: 1rem;

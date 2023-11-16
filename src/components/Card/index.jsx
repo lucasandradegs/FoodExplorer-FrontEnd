@@ -35,7 +35,7 @@ export function Card({ data, ...rest }) {
         <Container {...rest}>
             {[USER_ROLE.CUSTOMER].includes(user.role) &&
                 <UserContent>
-                    <img src={imageURL} alt="" />
+                    <img src={imageURL} alt={`Imagem do prato ${data.name}`} />
                     <Link to={`/details/${data.id}`}>
                         <h4>{data.name}{' >'}</h4>
                     </Link>
@@ -58,7 +58,7 @@ export function Card({ data, ...rest }) {
                         <p><PiPencilSimpleBold size={24} /></p>
                     </Link>
                     <div className="Content">
-                        <img src={imageURL} alt="" />
+                        <img src={imageURL} alt={`Imagem do prato ${data.name}`}/>
                         <Link to={`/details/${data.id}`}>
                             <h4>{data.name}{' >'}</h4>
                         </Link>

@@ -22,6 +22,14 @@ export const Container = styled.div`
         }
     }
 
+    animation: ContainerAnimation 1.2s;
+
+        @keyframes ContainerAnimation {
+            from {
+                transform: translateY(50%);
+            }
+        }
+
 `
 
 export const UserContent = styled.main`
@@ -182,6 +190,7 @@ export const UserContent = styled.main`
 export const AdminContent = styled.main`
     padding: 0 2.4rem;
     margin-top: 4.4rem;
+    
 
     .Transition {
         overflow-y: hidden;

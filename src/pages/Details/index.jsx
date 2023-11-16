@@ -14,10 +14,12 @@ import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
 import { USER_ROLE } from "../../utils/roles";
+import { FadeLoader } from "react-spinners";
 
 
 export function Details({ ingredients }) {
     const [data, setData] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const params = useParams()
     const { user } = useAuth()
@@ -27,16 +29,24 @@ export function Details({ ingredients }) {
     const [quantity, setQuantity] = useState(1)
 
     function handleAddItem() {
-        setQuantity (quantity + 1)
+        setQuantity(quantity + 1)
     }
 
     function handleRemoveItem() {
-        setQuantity (quantity - 1)
+        setQuantity(quantity - 1)
 
-        if (quantity == 1 ) {
+        if (quantity == 1) {
             setQuantity(1)
         }
     }
+
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+
+        }, 800)
+    }, [])
 
     useEffect(() => {
         async function fetchPlates() {
@@ -52,84 +62,91 @@ export function Details({ ingredients }) {
 
 
     return (
-        <Container>
-            <Header >
-                <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" />
-            </ Header>
+        <div className="LoadingDetails" style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
             {
-                data &&
-                <Content>
-                    {[USER_ROLE.CUSTOMER].includes(user.role) &&
-                        <UserContent>
-                            <Link to="/">
-                                <ButtonText icon={PiCaretLeftBold} title="voltar" />
-                            </Link>
-                            <div className="TitleSection">
-                                <img src={imageURL} alt="" />
-                                <div className="TileDesktop">
-                                    <h2>{data.name}</h2>
-                                    <p>{data.description}</p>
-                                    <div className="IngredientsSection">
-                                        <div className="Ingredients">
-                                            {
-                                                data.ingredients.map(title => (
-                                                    <span
-                                                        key={String(title.id)}
-                                                        ingredient={title.ingredient}
-                                                    >{title.ingredient}</span>
-                                                ))
-                                            }
+            loading ?
+            <FadeLoader color={"#36a6d6"} loading={loading} size={25}/>
+            :
+            <Container>
+                <Header >
+                    <InputHeader icon={FiSearch} placeholder="Busque por pratos ou ingredientes" />
+                </ Header>
+                {
+                    data &&
+                    <Content>
+                        {[USER_ROLE.CUSTOMER].includes(user.role) &&
+                            <UserContent>
+                                <Link to="/">
+                                    <ButtonText icon={PiCaretLeftBold} title="voltar" />
+                                </Link>
+                                <div className="TitleSection">
+                                    <img src={imageURL} alt="" />
+                                    <div className="TileDesktop">
+                                        <h2>{data.name}</h2>
+                                        <p>{data.description}</p>
+                                        <div className="IngredientsSection">
+                                            <div className="Ingredients">
+                                                {
+                                                    data.ingredients.map(title => (
+                                                        <span
+                                                            key={String(title.id)}
+                                                            ingredient={title.ingredient}
+                                                        >{title.ingredient}</span>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className="Details">
+                                            <AiOutlineMinus size={24} onClick={handleRemoveItem} cursor="pointer" />
+                                            <h4>{quantity < 10 ? `0${quantity}` : quantity}</h4>
+                                            <AiOutlinePlus size={24} onClick={handleAddItem} cursor="pointer" />
+                                            <Button className="mobileButton" icon={PiReceipt} title={`pedir ∙ R$ ${data.price * quantity}`} />
+                                            <Button className="desktopButton" title={`incluir ∙ R$ ${data.price * quantity}`} />
                                         </div>
                                     </div>
-                                    <div className="Details">
-                                        <AiOutlineMinus size={24} onClick={handleRemoveItem} cursor="pointer"/>
-                                        <h4>{quantity < 10 ? `0${quantity}` : quantity}</h4>
-                                        <AiOutlinePlus size={24} onClick={handleAddItem} cursor="pointer"/>
-                                        <Button className="mobileButton" icon={PiReceipt} title={`pedir ∙ R$ ${data.price * quantity}`} />
-                                        <Button className="desktopButton" title={`incluir ∙ ${data.price * quantity}`} />
-                                    </div>
                                 </div>
-                            </div>
-                        </UserContent>
-                    }
+                            </UserContent>
+                        }
 
-                    {[USER_ROLE.ADMIN].includes(user.role) &&
-                        <AdminContent>
-                            <Link to="/">
-                                <ButtonText icon={PiCaretLeftBold} title="voltar" />
-                            </Link>
-                            <div className="TitleSection">
-                                <img src={imageURL} alt="" />
-                                <div className="TileDesktop">
-                                    <h2>{data.name}</h2>
-                                    <p>{data.description}</p>
-                                    <div className="IngredientsSection">
-                                        <div className="Ingredients">
-                                            {
-                                                data.ingredients.map(title => (
-                                                    <span
-                                                        key={String(title.id)}
-                                                        ingredient={title.ingredient}
-                                                    >{title.ingredient}</span>
-                                                ))
-                                            }
+                        {[USER_ROLE.ADMIN].includes(user.role) &&
+                            <AdminContent>
+                                <Link to="/">
+                                    <ButtonText icon={PiCaretLeftBold} title="voltar" />
+                                </Link>
+                                <div className="TitleSection">
+                                    <img src={imageURL} alt="" />
+                                    <div className="TileDesktop">
+                                        <h2>{data.name}</h2>
+                                        <p>{data.description}</p>
+                                        <div className="IngredientsSection">
+                                            <div className="Ingredients">
+                                                {
+                                                    data.ingredients.map(title => (
+                                                        <span
+                                                            key={String(title.id)}
+                                                            ingredient={title.ingredient}
+                                                        >{title.ingredient}</span>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className="Details">
+                                            <Link to={`/edit/${data.id}`}>
+                                                <Button className="mobileButton" title="Editar prato" />
+                                                <Button className="desktopButton" title="Editar prato" />
+                                            </Link>
                                         </div>
                                     </div>
-                                    <div className="Details">
-                                        <Link to={`/edit/${data.id}`}>
-                                            <Button className="mobileButton" title="Editar prato" />
-                                            <Button className="desktopButton" title="Editar prato" />
-                                        </Link>
-                                    </div>
                                 </div>
-                            </div>
-                        </AdminContent>
-                    }
-                </Content>
+                            </AdminContent>
+                        }
+                    </Content>
+                }
+
+
+                <Footer />
+            </Container>
             }
-
-
-            <Footer />
-        </Container>
+        </div>
     )
 }

@@ -26,11 +26,12 @@ export function Header({ children }) {
                         <Link to="/menu">
                             <span><FiMenu size={24} /></span>
                         </Link>
-
-                        <div className="leftSideDesktop">
-                            <img src="/images/explorer.svg" alt="" />
-                            <h2>doce maria</h2>
-                        </div>
+                        <Link to={"/"}>
+                            <div className="leftSideDesktop">
+                                <img src="/images/explorer.svg" alt="" />
+                                <h2>doce maria</h2>
+                            </div>
+                        </Link>
 
                     </Left>
 
@@ -68,12 +69,13 @@ export function Header({ children }) {
                         <Link to="/menu">
                             <span><FiMenu size={24} /></span>
                         </Link>
-
-                        <div className="leftSideDesktop">
-                            <img src="/images/explorer.svg" alt="" />
-                            <h2>doce maria</h2>
-                            <span>admin</span>
-                        </div>
+                        <Link to={"/"}>
+                            <div className="leftSideDesktop">
+                                <img src="/images/explorer.svg" alt="" />
+                                <h2>doce maria</h2>
+                                <span>admin</span>
+                            </div>
+                        </Link>
 
                     </Left>
 
@@ -103,7 +105,7 @@ export function Header({ children }) {
                             <Link to={`/new`}>
                                 <Button title="Novo prato" />
                             </Link>
-                            <span><GoSignOut size={22} onClick={handleSignOut} cursor="pointer"/></span>
+                            <span><GoSignOut size={22} onClick={handleSignOut} cursor="pointer" /></span>
                         </div>
                     </Right>
                 </AdminContent>

@@ -21,6 +21,7 @@ export const Content = styled.div`
 
     overflow-y: hidden;
 
+
     .newPlateSection {
         overflow-y: hidden;
         animation: NewPlate 2.0s;

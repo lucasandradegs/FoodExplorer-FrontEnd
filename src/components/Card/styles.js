@@ -18,7 +18,8 @@ export const Container = styled.div`
     margin-bottom: 2.4rem;
     
 
-    background-color: ${({theme}) => theme.COLORS.DARK_200};
+    /* background-color: ${({theme}) => theme.COLORS.DARK_200}; */
+    background-color: ${({theme}) => theme.COLORS.LIGHT_300};
 
     a {
         color: ${({theme}) => theme.COLORS.LIGHT_300};
@@ -27,10 +28,12 @@ export const Container = styled.div`
 
     h4 {
         cursor: pointer;
+        color: ${({theme}) => theme.COLORS.DARK_600};
     }
 
     span {
-        color: ${({theme}) => theme.COLORS.CAKE_200};
+        /* color: ${({theme}) => theme.COLORS.CAKE_200}; */
+        color: ${({theme}) => theme.COLORS.TOMATO_100};
     }
     
     img {
@@ -46,6 +49,7 @@ export const Container = styled.div`
         gap: 1.4rem;
         
         width: 16.2rem;
+        color: ${({theme}) => theme.COLORS.DARK_600};
     }
 
     .QuantitySection {
@@ -78,6 +82,7 @@ export const Container = styled.div`
             text-align: center;
             font-family: 'Roboto', serif;
             font-size: 1.4rem;
+            color: ${({theme}) => theme.COLORS.DARK_900};
         }
 
         span {
@@ -134,6 +139,7 @@ export const AdminContent = styled.div`
         display: flex;
         flex-direction: row-reverse;
         margin-right: 1.6rem;
+        color: ${({theme}) => theme.COLORS.DARK_900};
     }
 
     .Content {
@@ -147,6 +153,7 @@ export const AdminContent = styled.div`
             margin-top: 1.2rem;
             margin-bottom: 1.2rem;
             font-size: 1.4rem;
+            color: ${({theme}) => theme.COLORS.DARK_900};
         }
         
 

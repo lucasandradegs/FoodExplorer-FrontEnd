@@ -17,5 +17,8 @@ export default {
         LIGHT_500: "#7C7C8A",
         LIGHT_600: "#76797B",
         LIGHT_700: "#4D585E",
+
+        LIGHT_1000: "#E3E1E1",
+        LIGHT_2000: "#fefeff",
     }
 }

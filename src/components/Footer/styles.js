@@ -19,6 +19,7 @@ export const Container = styled.div`
 
     span {
         font-size: 1rem;
+        color: ${({theme}) => theme.COLORS.DARK_900};
     }
 
     .foodexplorer {
@@ -30,7 +31,7 @@ export const Container = styled.div`
 
         font-family: 'Roboto', serif;
         
-        color: ${({theme}) => theme.COLORS.LIGHT_700};
+        color: ${({theme}) => theme.COLORS.DARK_600};
         
         img {
             width: 20px;
@@ -40,7 +41,7 @@ export const Container = styled.div`
     }
 
 
-    background-color: ${({theme}) => theme.COLORS.DARK_600};
+    background-color: ${({theme}) => theme.COLORS.LIGHT_300};
 
     @media (min-width: 1024px) {
         padding: 0 12.4rem;
@@ -48,10 +49,12 @@ export const Container = styled.div`
         h2 {
             font-weight: 700;
             font-size: 2.4rem;
+            color: ${({theme}) => theme.COLORS.DARK_600};
         }
 
         span {
             font-size: 1.4rem;
+            color: ${({theme}) => theme.COLORS.DARK_900};
         }
 
         .foodexplorer {

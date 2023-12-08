@@ -13,7 +13,8 @@ export const Container = styled.header`
     width: 100%;
 
 
-    background-color: ${({ theme }) => theme.COLORS.DARK_600};
+    background-color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    /* background-color: ${({ theme }) => theme.COLORS.DARK_600}; */
     
     @media (min-width: 1024px) {
         padding: 0 12.3rem;
@@ -31,7 +32,8 @@ export const Left = styled.div`
     margin-top: 0.8rem;
 
     a {
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+        color: ${({ theme }) => theme.COLORS.DARK_600};
+        /* color: ${({ theme }) => theme.COLORS.LIGHT_100}; */
     }
 
     @media (min-width: 1024px) {
@@ -65,6 +67,7 @@ export const Middle = styled.div`
 
     h2 {
         font-size: 21px;
+        color: ${({theme}) => theme.COLORS.DARK_600};
     }
 
     @media (min-width: 1024px) {
@@ -83,8 +86,13 @@ export const Middle = styled.div`
 export const Right = styled.div`
     margin-top: 0.8rem;
 
-    p {
+    span {
+        color: ${({theme}) => theme.COLORS.DARK_600};
+        cursor: pointer;
+    }
 
+    p {
+        
         position: absolute;
         top: 48px;
         right: 27px;
@@ -127,6 +135,7 @@ export const Right = styled.div`
             display: flex;
             align-items: center;
             gap: 3.2rem;
+            
 
             span {
                 margin-top: 6px;
@@ -155,13 +164,15 @@ export const AdminContent = styled.div`
         align-items: center;
 
         a {
-            color: ${({theme}) => theme.COLORS.LIGHT_300};
+            color: ${({theme}) => theme.COLORS.TOMATO_100};
+            /* color: ${({theme}) => theme.COLORS.LIGHT_100}; */
         }
 
         span {
             font-size: 1.2rem;
             margin-top: 0.3rem;
-            color: ${({ theme }) => theme.COLORS.CAKE_200};
+            color: ${({ theme }) => theme.COLORS.DARK_600};
+            /* color: ${({ theme }) => theme.COLORS.CAKE_200}; */
         }
 
         @media (min-width: 1024px) {
@@ -174,7 +185,8 @@ export const AdminContent = styled.div`
             position: absolute;
             top: 7rem;
             left: 25rem;
-            color: ${({ theme }) => theme.COLORS.CAKE_200};
+            /* color: ${({ theme }) => theme.COLORS.CAKE_200}; */
+            color: ${({ theme }) => theme.COLORS.DARK_600};
         }
     }
 

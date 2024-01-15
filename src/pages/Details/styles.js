@@ -13,7 +13,7 @@ export const Container = styled.div`
 
     overflow-x: hidden;
 
-    background-color: ${({theme}) => theme.COLORS.LIGHT_100};
+    /* background-color: ${({theme}) => theme.COLORS.LIGHT_100}; */
 
 `   
 
@@ -27,7 +27,7 @@ export const Content = styled.main`
         button:nth-child(1) {
             display: flex;
             justify-content: flex-start;
-            color: ${({theme}) => theme.COLORS.DARK_600};
+            /* color: ${({theme}) => theme.COLORS.DARK_600}; */
 
             font-size: 2.4rem;
 
@@ -36,7 +36,7 @@ export const Content = styled.main`
             svg {
                 width: 3.2rem;
                 height: 3.2rem;
-                color: ${({theme}) => theme.COLORS.DARK_600};
+                /* color: ${({theme}) => theme.COLORS.DARK_600}; */
             }
         }
 
@@ -58,12 +58,12 @@ export const Content = styled.main`
 
         h2 {
             margin-top: 1.6rem;
-            color: ${({theme}) => theme.COLORS.DARK_600};
+            /* color: ${({theme}) => theme.COLORS.DARK_600}; */
         }
 
         p {
             margin-top: 2.4rem;
-            color: ${({theme}) => theme.COLORS.DARK_600};
+            /* color: ${({theme}) => theme.COLORS.DARK_600}; */
         }
 
         @media (min-width: 1024px) {
@@ -115,7 +115,7 @@ export const Content = styled.main`
         margin-top: 4.8rem;
         justify-content: center;
 
-        color: ${({theme}) => theme.COLORS.DARK_600};
+        /* color: ${({theme}) => theme.COLORS.DARK_600}; */
         
         gap: 1.6rem;
         

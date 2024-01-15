@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    /* background: ${({ theme }) => theme.COLORS.DARK_400}; */
-    background: ${({ theme }) => theme.COLORS.LIGHT_100};
+    background: ${({ theme }) => theme.COLORS.DARK_400};
+    /* background: ${({ theme }) => theme.COLORS.LIGHT_100}; */
 
     width: 100%;
     min-height: 100vh;
@@ -64,8 +64,8 @@ export const UserContent = styled.main`
         border-radius: 0.8rem;
 
 
-        /* background: linear-gradient(180deg, #091E26 0%, #00131C 100%); */
-        background: ${({ theme }) => theme.COLORS.LIGHT_300};
+        background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
+        /* background: ${({ theme }) => theme.COLORS.LIGHT_300}; */
 
         img {
             position: absolute;
@@ -222,8 +222,8 @@ export const AdminContent = styled.main`
         border-radius: 0.8rem;
 
 
-        /* background: linear-gradient(180deg, #091E26 0%, #00131C 100%); */
-        background: ${({ theme }) => theme.COLORS.LIGHT_300};
+        background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
+        /* background: ${({ theme }) => theme.COLORS.LIGHT_300}; */
 
         img {
             position: absolute;

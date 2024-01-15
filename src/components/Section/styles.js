@@ -6,7 +6,7 @@ export const Container = styled.div`
 
     h2 {
         font-weight: 500;
-        color: ${({theme}) => theme.COLORS.DARK_600};
+        /* color: ${({theme}) => theme.COLORS.DARK_600}; */
     }
 
     @media (min-width: 1024px) {
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
         h2 {
             font-size: 3.2rem;
-            color: ${({theme}) => theme.COLORS.DARK_600};
+            /* color: ${({theme}) => theme.COLORS.DARK_600}; */
         }
     }
 
@@ -51,10 +51,10 @@ export const Slider = styled.div`
         border: 0;
         position: relative;
 
-        /* background: linear-gradient(270deg, rgba(0, 10, 15, 0.272541) 10%, #000A0F 100%); */
-        background: ${({theme}) => theme.COLORS.LIGHT_100};
+        background: linear-gradient(270deg, rgba(0, 10, 15, 0.272541) 10%, #000A0F 100%);
+        /* background: ${({theme}) => theme.COLORS.LIGHT_100}; */
         svg {
-            color: ${({theme}) => theme.COLORS.LIGHT_300};
+            color: white;
         }
     }
 

@@ -101,7 +101,7 @@ export const UserContent = styled.main`
                 align-items: flex-end;
                 margin-right: 30px;
                 margin-top: 22px;
-                color: ${({theme}) => theme.COLORS.DARK_600};
+                /* color: ${({theme}) => theme.COLORS.DARK_600}; */
 
                 h2 {
                     font-size: 3rem;

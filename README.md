@@ -39,3 +39,8 @@ Por padrão, ao se cadastrar no site, sua conta será definida como cliente padr
 
 Como administrador, explore a visão exclusiva para gerenciar pratos, bebidas e configurações. (Entre em contato para fornecer uma conta administradora)
 Como cliente, aproveite para visualizar o cardápio e fazer pedidos.
+
+# ATENÇÃO!
+<H1>ESSE REPOSITÓRIO FOI CRIADO APENAS PARA FAZER O DEPLOY, O HISTÓRICO DE COMMITS A MEDIDA QUE O SISTEMA ESTAVA SENDO FEITO SE ECONTRA EM:
+https://github.com/lucasandradegs/FoodExplorer
+</H1>

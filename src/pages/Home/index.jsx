@@ -62,7 +62,7 @@ export function Home() {
                                     <img className="bannerDesktop" src="/images/banner.svg" alt="" />
 
                                     <div className="mobileTitle">
-                                        <h2>Doce Maria</h2>
+                                        <h2>Food Explorer</h2>
                                     </div>
 
                                     <div className="desktopTitle">
@@ -127,7 +127,7 @@ export function Home() {
                                     <img className="bannerDesktop" src="/images/banner.svg" alt="" />
 
                                     <div className="mobileTitle">
-                                        <h2>Doce Maria</h2>
+                                        <h2>Food Explorer</h2>
                                     </div>
 
                                     <div className="desktopTitle">

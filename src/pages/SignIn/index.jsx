@@ -36,7 +36,7 @@ export function SignIn() {
                     <main className="main">
                         <div className="title">
                             <img src="/images/explorer.svg" alt="" />
-                            <h2>doce maria</h2>
+                            <h2>food explorer</h2>
                         </div>
                         <Form>
                             <div className="form">

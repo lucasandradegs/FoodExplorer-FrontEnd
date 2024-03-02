@@ -1,5 +1,5 @@
 import axios from "axios"
 
 export const api = axios.create({
-    baseURL: "https://docemaria-api.onrender.com"
+    baseURL: "https://foodexplorer-backend-eqrz.onrender.com"
 })
